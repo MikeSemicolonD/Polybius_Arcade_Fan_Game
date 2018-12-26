@@ -9,10 +9,10 @@ The only think you need to be concerned about is linking your FPS controller to 
 The FPS controller it comes with is basically enough to get the job done.
 
 ## Controls:
-  ⋅⋅* WASD to move around. (Both FPS Mode and Arcade Mode)
-  ⋅⋅* E to interact with the machine. (FPS Mode)
-  ⋅⋅* SPACE to shoot. (Arcade Mode)
-  ⋅⋅* ENTER to input a coin into the machine. (Arcade Mode)
+  * WASD to move around. (Both FPS Mode and Arcade Mode)
+  * E to interact with the machine. (FPS Mode)
+  * SPACE to shoot. (Arcade Mode)
+  * ENTER to input a coin into the machine. (Arcade Mode)
 
 ## Note:
   Uses sound effects from the SINNESLOSCHEN Polybius Fan Game.
