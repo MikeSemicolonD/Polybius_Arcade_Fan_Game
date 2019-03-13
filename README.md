@@ -1,4 +1,4 @@
-# Virtual Polybius Arcade Fan Game
+# Polybius Arcade Fan Game
 
 ## Description:
   A working Polybius Arcade game you can virutally walk up to and play. (Works with Unity 2018.2.0f2)
