@@ -1,7 +1,7 @@
 # Polybius Arcade Fan Game
 
 ## Description:
-  A working Polybius Arcade game you can virutally walk up to and play. (Works with Unity 2018.2.0f2)
+  A working Polybius Arcade Cabinet you can virutally walk up to and play. (Works with Unity 2018.2.0f2)
 
 ## Implementation Directions:
   You should be able to launch the project, go into 'SampleScene' and have it all work.
