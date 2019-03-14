@@ -14,8 +14,16 @@ The FPS controller it comes with is basic enough to get the job done for a stand
   * SPACE to shoot. (Arcade Mode)
   * ENTER to input a coin into the machine. (Arcade Mode)
 
-## Note:
-  Uses sound effects from the SINNESLOSCHEN Polybius Fan Game.
-
-## Another Note:
+# Note:
   The arcade should be limited to two specific rotations on the y-axis (0 and 180), otherwise the arcade machine won't display anything.
+
+# Screenshots:
+![](ProjectArcade/Build/2019/Screenshots/1.PNG)
+![](ProjectArcade/Build/2019/Screenshots/2.PNG)
+![](ProjectArcade/Build/2019/Screenshots/3.PNG)
+![](ProjectArcade/Build/2019/Screenshots/4.PNG)
+![](ProjectArcade/Build/2019/Screenshots/5.PNG)
+![](ProjectArcade/Build/2019/Screenshots/6.PNG)
+![](ProjectArcade/Build/2019/Screenshots/7.PNG)
+![](ProjectArcade/Build/2019/Screenshots/8.PNG)
+![](ProjectArcade/Build/2019/Screenshots/9.PNG)
