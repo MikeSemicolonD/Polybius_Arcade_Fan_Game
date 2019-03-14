@@ -1,11 +1,11 @@
-# Virtual Polybius Arcade Fan Game
+# Polybius Arcade Fan Game
 
 ## Description:
-  A working Polybius Arcade game you can virutally walk up to and play. (Works with Unity 2018.2.0f2)
+  A working Polybius Arcade Cabinet you can virutally walk up to and play. (Works with Unity 2018.2.0f2)
 
 ## Implementation Directions:
   You should be able to launch the project, go into 'SampleScene' and have it all work.
-I made the thing modular enough where you can effectively export it as a Unity package and use it in your own project if you wish. The only think you need to be concerned about is linking your FPS controller to the arcade machine so it can interact with it.
+I made the thing modular enough where you can effectively export it as a Unity package and use it in your own project if you wish. The only thing you need to be concerned about is linking your FPS controller to the arcade machine so it can interact with the arcade machine.
 The FPS controller it comes with is basic enough to get the job done for a stand alone project.
 
 ## Controls:
@@ -18,4 +18,4 @@ The FPS controller it comes with is basic enough to get the job done for a stand
   Uses sound effects from the SINNESLOSCHEN Polybius Fan Game.
 
 ## Another Note:
-  The arcade should be limited to two specific rotations, otherwise the arcade machine won't display anything.
+  The arcade should be limited to two specific rotations on the y-axis (0 and 180), otherwise the arcade machine won't display anything.
