@@ -19,6 +19,7 @@ public class PlayerShip : MonoBehaviour {
     public Transform ProjectileSpawnPoint;
     public Transform ProjectilePoolParent;
 
+    public float speedMultiplier = 0.01f;
     public float XInput, YInput;
     private List<Transform> Projectiles;
     private Vector3 movement;
@@ -109,9 +110,9 @@ public class PlayerShip : MonoBehaviour {
             XInput = (BeingUsed) ? Input.GetAxis("Horizontal") : 0f;
             YInput = (BeingUsed) ? Input.GetAxis("Vertical") : 0f;
 
-            movement = new Vector3(XInput, YInput, 0f) / 100;
+            movement = new Vector3(XInput, YInput, 0f) * speedMultiplier;
 
-            if (BeingUsed && Input.GetKeyDown(KeyCode.Space) && bossTarget.gameObject.activeSelf) //Fire projectile at direction of boss
+            if (BeingUsed && Input.GetButtonDown("Fire") && bossTarget.gameObject.activeSelf) //Fire projectile at direction of boss
             {
                 for (int i = 0; i < Projectiles.Count; i++)
                 {

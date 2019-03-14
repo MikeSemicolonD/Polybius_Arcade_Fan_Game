@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Wireframe Double-Sided ChromaFlicker
   m_Shader: {fileID: 4800000, guid: 0ee0c86dac5512f40a5c118571d81117, type: 3}
   m_ShaderKeywords: 
@@ -29,4 +30,4 @@ Material:
     m_Floats:
     - _Thickness: 5
     m_Colors:
-    - _Color: {r: 0.6150756, g: 0, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.86631477, b: 0, a: 1}

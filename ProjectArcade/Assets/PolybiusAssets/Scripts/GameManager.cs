@@ -52,11 +52,18 @@ public class GameManager : MonoBehaviour {
     public AudioClip TransitionSound;
     public AudioClip ExplosionSound;
     public AudioClip Music;
-    private bool transitioning;
     private int numberOfCredits = 0;
-    private float startingHealthValue = 200;
     private int roundNum = 1;
+    private int startNumberOfLives;
     private bool BeingUsed;
+    private bool transitioning;
+    private bool NextScreenTriggered;
+    private readonly float startingHealthValue = 200;
+
+    public bool IsBeingUsed()
+    {
+        return BeingUsed;
+    }
 
     public void Use()
     {
@@ -84,65 +91,68 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
+        startNumberOfLives = numberOfLives;
 
         if (!PlayerPrefs.HasKey("PolybiusScore1"))
         {
             PlayerPrefs.SetInt("PolybiusScore1", 00125375);
-            PlayerPrefs.SetString("PolybiusScore1Name", "JANITORR");
+            PlayerPrefs.SetString("PolybiusScore1Name", "JANITOR ");
             PlayerPrefs.Save();
         }
 
         if (!PlayerPrefs.HasKey("PolybiusScore2"))
         {
             PlayerPrefs.SetInt("PolybiusScore2", 00045075);
-            PlayerPrefs.SetString("PolybiusScore2Name", "JANITORA");
+            PlayerPrefs.SetString("PolybiusScore2Name", "JOE     ");
             PlayerPrefs.Save();
         }
 
         if (!PlayerPrefs.HasKey("PolybiusScore3"))
         {
             PlayerPrefs.SetInt("PolybiusScore3", 00025050);
-            PlayerPrefs.SetString("PolybiusScore3Name", "JANITORE");
+            PlayerPrefs.SetString("PolybiusScore3Name", "GABE    ");
             PlayerPrefs.Save();
         }
 
         if (!PlayerPrefs.HasKey("PolybiusScore4"))
         {
             PlayerPrefs.SetInt("PolybiusScore4", 00001025);
-            PlayerPrefs.SetString("PolybiusScore4Name", "JANITORT");
+            PlayerPrefs.SetString("PolybiusScore4Name", "MIKE    ");
             PlayerPrefs.Save();
         }
 
         if (!PlayerPrefs.HasKey("PolybiusScore5"))
         {
             PlayerPrefs.SetInt("PolybiusScore5", 00000025);
-            PlayerPrefs.SetString("PolybiusScore5Name", "JANITORC");
+            PlayerPrefs.SetString("PolybiusScore5Name", "S O R A ");
             PlayerPrefs.Save();
         }
 
         GetLeaderboardData();
     }
-  
+
     private void Update()
     {
         if (!gameOn)
         {
             if (!gameStarting)
             {
-                if (BeingUsed && Input.GetKeyDown(KeyCode.Return) && MainMenuUI.gameObject.activeSelf)
+                if (BeingUsed && Input.GetButtonDown("Start") && numberOfCredits == 0 && MainMenuUI.gameObject.activeSelf)
                 {
-                    PlaySound(CreditInputSound,0.75f);
+                    PlaySound(CreditInputSound, 0.75f);
                     transitioning = true;
                     numberOfCredits++;
-                    creditAmountUI.text = "Credits "+ numberOfCredits;
+                    creditAmountUI.text = "Credits " + numberOfCredits;
                     gameStarting = true;
                 }
+                else if(NextScreenTriggered && (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0))
+                {
+                    NextScreenTriggered = false;
+                }
                 else if (BeingUsed && (MainMenuUI.gameObject.activeSelf
-                    || LeaderboardUI.gameObject.activeSelf) 
-                    && (Input.GetKeyDown(KeyCode.LeftArrow)
-                    || Input.GetKeyDown(KeyCode.RightArrow)
-                    || Input.GetKeyDown(KeyCode.UpArrow)
-                    || Input.GetKeyDown(KeyCode.DownArrow)))
+                    || LeaderboardUI.gameObject.activeSelf) && 
+                    ((Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical")) || 
+                    (!NextScreenTriggered && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))))
                 {
                     //Toggle Leaderboard
                     if (!showingLeaderboard && MainMenuUI.gameObject.activeSelf)
@@ -153,6 +163,8 @@ public class GameManager : MonoBehaviour {
                     {
                         HideLeaderBoard();
                     }
+
+                    NextScreenTriggered = true;
                 }
                 else
                 {
@@ -189,7 +201,7 @@ public class GameManager : MonoBehaviour {
 
                         lostALifeWaitTimeRuntime = lostALifeWaitTime;
                         enemyShip.gameObject.SetActive(true);
-                        enemyShip.SetHealth(startingHealthValue*roundNum);
+                        enemyShip.SetHealth(startingHealthValue * roundNum);
                         player.gameObject.SetActive(true);
 
                         gameOn = true;
@@ -210,7 +222,7 @@ public class GameManager : MonoBehaviour {
                             enemyShip.gameObject.SetActive(false);
                             player.gameObject.SetActive(false);
                             transitionUI.gameObject.SetActive(true);
-                            PlaySound(TransitionSound, 0.75f);
+                            PlaySound(TransitionSound, 1f);
                         }
                         else
                         {
@@ -219,12 +231,14 @@ public class GameManager : MonoBehaviour {
                         }
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Return) && MainMenuUI.gameObject.activeSelf)
-                {
-                    PlaySound(CreditInputSound, 0.75f);
-                    numberOfCredits++;
-                    creditAmountUI.text = "Credits " + numberOfCredits;
-                }
+                //else if (Input.GetButtonDown("Start") && numberOfCredits == 0 && MainMenuUI.gameObject.activeSelf)
+                //{
+                //    Debug.Log("Start = "+Input.GetButtonDown("Start"));
+                //    Debug.Log("Called");
+                //    PlaySound(CreditInputSound, 0.75f);
+                //    numberOfCredits++;
+                //    creditAmountUI.text = "Credits " + numberOfCredits;
+                //}
                 else
                 {
                     return;
@@ -261,6 +275,103 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
+    }
+
+	//Returns true if a profane word was found in the string
+    public bool ProfanityCheck(string text)
+    {
+        string input = text.ToLower();
+
+        string []profaneWords = {"latino","mexican","blak","blac","whit","white", "shit", "poop", "puss","pussie","pussy",
+                                 "fuc","fuk","phuck","phuc","phuk","black","suc","dik" ,"tity","titties","kike","kite"
+								 ,"priest","suk","suck","sux","sex","hole","spic","dix","nut","tit","titie", "moolies",
+								 "niger","nig","mother","fuck","fart","ass","dic","nazi","hitler", "stalin",
+								 "ashole","bitch","cuck","cock","kek","kuk","cuc","nerd","lonely","bad"};
+        
+        //Remove spaces
+        for(int i = 0; i < input.Length; i++)
+        {
+            if(input[i] == ' ')
+            {
+                input = input.Remove(i,1);
+				i--;
+            }
+        }
+		
+		char currentTrackedChar=' ';
+		string compactInput = "";
+		string compactByTwo = "";
+		
+		//Take out any reoccuring text
+        for(int i = 0; i < input.Length; i++)
+        {
+            if(input[i] != currentTrackedChar)
+            {
+				compactInput += input[i];
+                currentTrackedChar = input[i];
+            }
+        }
+		
+		//Take out any reoccuring text (but allows 2 characters to occur)
+        for(int i = 0, secondOccured=0; i < input.Length; i++)
+        {
+            if(input[i] != currentTrackedChar)
+            {
+				compactByTwo += input[i];
+                currentTrackedChar = input[i];
+				secondOccured = 0;
+            }
+			else
+			{
+				if(secondOccured == 0)
+				{
+					secondOccured = 1;
+					compactByTwo += input[i];
+				}
+			}
+        }
+		
+		input = compactInput;
+		
+		//Console.WriteLine("Parsed = "+input);
+
+		//For each profane word
+        for (int profaneWordIndex = 0; profaneWordIndex < profaneWords.Length; profaneWordIndex++)
+        {
+			//Run that word throughout the name to see if any of them are there
+            for (int left = 0, right = profaneWords[profaneWordIndex].Length; left < input.Length; left++)
+            {
+				//if(input.Length-(left+right) >= 0)
+				//Console.WriteLine(profaneWords[profaneWordIndex]+" against "+input.Substring(left,right));
+				   
+                if(input.Length-(left+right) >= 0 && profaneWords[profaneWordIndex] == input.Substring(left,right))
+                {
+                    return true;
+                }
+            }
+        }
+		
+		input = compactByTwo;
+		
+		//Console.WriteLine("Parsed = "+input);
+
+		//For each profane word
+        for (int profaneWordIndex = 0; profaneWordIndex < profaneWords.Length; profaneWordIndex++)
+        {
+			//Run that word throughout the name to see if any of them are there
+            for (int left = 0, right = profaneWords[profaneWordIndex].Length; left < input.Length; left++)
+            {
+				//if(input.Length-(left+right) >= 0)
+				//Console.WriteLine(profaneWords[profaneWordIndex]+" against "+input.Substring(left,right));
+				   
+                if(input.Length-(left+right) >= 0 && profaneWords[profaneWordIndex] == input.Substring(left,right))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private void SetLeaderBoardActive(bool condition)
@@ -332,9 +443,16 @@ public class GameManager : MonoBehaviour {
     
     private void EnableLivesUI()
     {
-        for(int i = 0; i < numberOfLives; i++)
+        for(int i = 0; i < livesUI.Length; i++)
         {
-            livesUI[i].SetActive(true);
+            if (i < numberOfLives)
+            {
+                livesUI[i].SetActive(true);
+            }
+            else
+            {
+                livesUI[i].SetActive(false);
+            }
         }
     }
 
@@ -346,7 +464,7 @@ public class GameManager : MonoBehaviour {
         numberOfCredits = 0;
         enemyShip.DisableActiveShapes();
         enemyShip.gameObject.SetActive(gameOn);
-        numberOfLives = 6;
+        numberOfLives = startNumberOfLives;
 
         bool newScore = false;
 
