@@ -25,7 +25,7 @@ The FPS controller it comes with is basic enough to get the job done for a stand
   * 'B' to Quit. (When in Main Menu)
 
 # Note:
-  The arcade should be limited to two specific rotations on the y-axis (0 and 180), otherwise the arcade machine won't display anything.
+  The arcade should be limited to two specific rotations on the y-axis (0 and 180), otherwise the arcade machine won't display anything. This is because the game uses Vector2D.
 
 # Screenshots:
 ![](ProjectArcade/Build/2019/Screenshots/1.PNG)
