@@ -25,15 +25,24 @@ The FPS controller it comes with is basic enough to get the job done for a stand
   * 'B' to Quit. (When in Main Menu)
 
 # Note:
-  The arcade should be limited to two specific rotations on the y-axis (0 and 180), otherwise the arcade machine won't display anything. This is because the game uses Vector2D.
+  * The arcade should be set to one of two rotations on the y-axis (0 or 180), otherwise the cabinet won't display anything. (This is because the game uses Vector2D)
+  * The highscore board is not an online score board. (Scores are saved in PlayerPrefs)
 
 # Screenshots:
-![](ProjectArcade/Build/2019/Screenshots/1.PNG)
-![](ProjectArcade/Build/2019/Screenshots/2.PNG)
-![](ProjectArcade/Build/2019/Screenshots/3.PNG)
-![](ProjectArcade/Build/2019/Screenshots/4.PNG)
-![](ProjectArcade/Build/2019/Screenshots/5.PNG)
-![](ProjectArcade/Build/2019/Screenshots/6.PNG)
-![](ProjectArcade/Build/2019/Screenshots/7.PNG)
-![](ProjectArcade/Build/2019/Screenshots/8.PNG)
-![](ProjectArcade/Build/2019/Screenshots/9.PNG)
+![Title Screen](ProjectArcade/Build/2019/Screenshots/1.PNG)
+![Front of Arcade Cabinet](ProjectArcade/Build/2019/Screenshots/2.PNG)
+![Credits & Local Highscore Board](ProjectArcade/Build/2019/Screenshots/3.PNG)
+![Corner View of Cabinet](ProjectArcade/Build/2019/Screenshots/4.PNG)
+![Corner View of Exit](ProjectArcade/Build/2019/Screenshots/5.PNG)
+![Gameplay Screenshot One](ProjectArcade/Build/2019/Screenshots/6.PNG)
+![Gameplay Screenshot Two](ProjectArcade/Build/2019/Screenshots/7.PNG)
+![Gameplay Screenshot Three](ProjectArcade/Build/2019/Screenshots/8.PNG)
+![Entering Name in Local Highscore Board](ProjectArcade/Build/2019/Screenshots/9.PNG)
+
+<div align="center">
+  
+# Used In:
+## The Janinator by Little Gear Studios
+![The Janinator Logo](https://img.itch.zone/aW1nLzU3NjcwODcucG5n/original/V7Y1Oe.png)
+https://littlegearstudios.itch.io/the-janinator
+</div>
