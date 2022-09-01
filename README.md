@@ -25,7 +25,7 @@ The FPS controller it comes with is basic enough to get the job done for a stand
   * 'B' to Quit. (When in Main Menu)
 
 # Note:
-  * The arcade should be set to one of two rotations on the y-axis (0 or 180), otherwise the cabinet won't display anything. (This is because the game uses Vector2D)
+  * The arcade should be set to one of two rotations on the y-axis (0 or 180), otherwise the cabinet won't display anything. (This is because the game uses a Canvas & Vector2D)
   * The highscore board is not an online score board. (Scores are saved in PlayerPrefs)
 
 # Screenshots:
